@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock title %}</title>
+
+    {% comment %} bootstrap {% endcomment %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    {% comment %} css {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container d-flex justify-content-between align-items-center">
+            <div class="header-logo">
+                <a href="/">
+                    <img src="{% static 'images/logo.png' %}" alt="logo" class="site-logo">
+                </a>
+            </div>
+    
+            <div class="header-center">
+                <nav class="header-nav">
+                    <ul class="d-flex justify-content-center">
+                        <li>
+                            <a href="/" class="nav-a {% if active_page == 'cases' %}active{% endif %}">Cases</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="header-profile pt-2"></div>
+        </div>
+    </header>
+    <div class="container">
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <img src="{% static 'images/background.png' %}" alt="background" class="background">
+</body>
+</html>

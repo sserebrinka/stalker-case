@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Joan&display=swap');
+
+:root {
+    --box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.363);
+}
+
+@font-face {
+    font-family: "regular";
+    src: url(../font/Joan-Regular.ttf);
+}
+
+body {
+    font-family: "Joan-Regular";
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.header-container {
+    box-sizing: border-box;
+    max-width: 1400px; 
+    margin: 0 auto;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0 15px; 
+}
+
+.header {
+    height: 80px; 
+    background-color: #0A0D0D; 
+    box-shadow: var(--box-shadow); 
+    position: relative; 
+}
+
+.site-logo {
+    max-height: 70%; 
+    max-width: 110px; 
+    object-fit: contain;
+    position: relative; 
+    left: -180px; 
+}
+
+.header-center {
+    flex-grow: 1; 
+    text-align: center; 
+}
+
+.header-nav ul {
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.header-nav li {
+    margin: 0 10px; 
+}
+
+.nav-a {
+    color: white; 
+    text-decoration: none; 
+    font-size: 32px;
+    display: inline-block;
+    position: relative;
+    transition: transform 0.3s ease, font-size 0.3s ease;
+}
+
+.nav-a.active::after {
+    content: ''; 
+    display: block; 
+    width: 100%; 
+    height: 2px; 
+    background-color: #ffffff; 
+    position: absolute;
+    bottom: -1px; 
+}
+
+.nav-a:hover {
+    font-size: 40px;
+    color: #B5680A
+}
+
+.nav-a.active:hover::after {
+    opacity: 0; 
+}
+
+.header-profile {
+    flex-shrink: 0; 
+}
+
+.background {
+    display: block; 
+    width: 100%; 
+    height: calc(100vh - 80px); 
+    object-fit: cover; 
+    position: relative; 
+    z-index: -1;
+}
