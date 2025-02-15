@@ -70,12 +70,12 @@ body, html {
 
 .header-nav li {
     margin: 0 30px; 
+    font-size: 32px;
 }
 
 .nav-a {
-    color: white; 
+    color: #ffffff; 
     text-decoration: none; 
-    font-size: 32px;
     display: inline-block;
     position: relative;
     transition: transform 0.3s ease, font-size 0.3s ease;
@@ -93,7 +93,7 @@ body, html {
 
 .nav-a:hover {
     font-size: 40px;
-    color: #B5680A
+    color: #B5680A;
 }
 
 .nav-a.active:hover::after {
@@ -108,7 +108,7 @@ body, html {
 }
 
 .header-profile a {
-    color: white;
+    color: #ffffff;
     text-decoration: none;
     font-size: 32px;
     transition: transform 0.3s ease, font-size 0.3s ease, color 0.3s ease;
@@ -143,6 +143,16 @@ body, html {
     margin-top: 80px;
 }
 
+.box-balance {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #B5680A;
+    border-radius: 20px;
+    font-size: 1.1em;
+    color: #fff;
+    margin-left: 10px;
+}
+
 .case-box1 {
     width: 100%;
     height: 500px;
@@ -156,11 +166,264 @@ body, html {
 
 .case-box2 {
     width: 100%;
-    height: 700px;
+    height: auto;
     border: 2px solid #B5680A;
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
     box-shadow: 0 0 15px rgba(185, 144, 10, 0.8);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.cases-box {
+    display: flex;
+    flex-wrap: wrap; /* Разрешает перенос элементов, если они не помещаются в строку */
+    justify-content: space-between; /* Равномерно распределяет кейсы по строке */
+    gap: 20px; /* Добавляет пространство между кейсами */
+}
+
+.separate-case {
+    width: calc(33.333% - 20px); 
+    background-color: rgba(255, 255, 255, 0.301);
+    padding: 20px;
+    border: 2px solid #774507;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px; 
+    box-sizing: border-box;
+}
+
+.separate-case h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.separate-case p {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.case-img {
+    width: 100%; /* Занимает всю ширину родительского контейнера */
+    max-height: 200px; /* Ограничиваем высоту */
+    object-fit: cover; /* Обрезает изображение, сохраняя пропорции */
+    border-radius: 10px; /* Скругленные углы */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Легкая тень для объема */
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.auth-box {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 350px;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}
+
+label {
+    text-align: left;
+    display: block;
+    margin: 10px 0 5px;
+    color: #ffffff;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    background: #B5680A;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.forgot-password {
+    color: #ffffff; 
+    text-decoration: none; 
+    display: inline-block;
+    transition: transform 0.3s ease, font-size 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #B5680A;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    color: #ffffff;
+}
+
+.messages {
+    color:#ffffff;
+}
+
+.profile-box {
+    width: 100%;
+    height: 350px;
+    padding: 20px;
+    border: 2px solid #B5680A;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 15px rgba(185, 144, 10, 0.8);
+    margin-bottom: 10px;
+}
+
+.items-profile-box {
+    width: 100%;
+    height: 500px;
+    padding: 20px;
+    border: 2px solid #B5680A;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 15px rgba(185, 144, 10, 0.8);
+    margin-bottom: 10px;
+}
+
+.profile-title {
+    color: #ffffff;
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #B5680A;
+}
+
+.profile-text {
+    font-size: 18px;
+    color: white;
+}
+
+.get-money-btn, .buy-cases-btn {
+    background-color: #B5680A;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    display: block;
+    margin: 20px auto;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.tab-button {
+    background-color: #0A0D0D;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.tab-button.active {
+    background-color: #B5680A;
+    color: black;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.inventory-list {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.inventory-item {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.empty-inventory {
+    text-align: center;
+    font-size: 18px;
+    color: white;
+}
+
+.messages {
+    position: fixed;
+    top: 130px; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(185, 144, 10, 0.8); 
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15px); 
+    z-index: 1000;
+    display: none;
+    opacity: 1;
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.message {
+    font-size: 24px;
+    color: #ffffff;
+}
+
+.messages.hidden {
+    display: none;
+}
+
+.cases-title {
+    color: #ffffff;
+    text-align: center;
+    font-size: 32px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 

@@ -1,9 +1,58 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Login{% endblock title %}
+{% block title %}Login | StalkerCase{% endblock title %}
 
 {% block content %}
-    
-{% endblock content %}
+{% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+{% endif %}
+<div class="auth-container">
+    <div class="auth-box">
+        <div class="tabs">
+            <button id="signInBtn" class="active">SIGN IN</button>
+            <button id="signUpBtn">SIGN UP</button>
+        </div>
 
+        <div id="signInForm" class="form-content">
+            <form method="POST" action="{% url 'users:login' %}">
+                {% csrf_token %}
+                <label>Username</label>
+                <input type="text" name="username" required>
+
+                <label>Password</label>
+                <input type="password" name="password" required>
+
+                <div class="remember-me">
+                    <input type="checkbox" name="remember"> Keep me logged in
+                </div>
+                <button type="submit">LOGIN</button>
+                <a href="#" class="forgot-password">Forgot password?</a>
+            </form>
+        </div>
+
+        <div id="signUpForm" class="form-content hidden">
+            <form method="POST" action="{% url 'users:registration' %}">
+                {% csrf_token %}
+                <label>Username</label>
+                <input type="text" name="username" required>
+
+                <label>Email</label>
+                <input type="email" name="email" required>
+
+                <label>Password</label>
+                <input type="password" name="password1" required>
+
+                <label>Confirm password</label>
+                <input type="password" name="password2" required>
+
+                <button type="submit">REGISTER</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

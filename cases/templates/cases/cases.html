@@ -4,10 +4,48 @@
 {% block title %}Cases{% endblock title %}
 
 {% block content %}
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
     <div class="case-box1">
-        
+        <!-- Здесь ваш контент -->
     </div>
     <div class="case-box2">
+        <h2 class="cases-title">Cases</h2>
+        <div class="cases-box">
+            {% if cases %}
+                {% for case in cases %}
+                    <div class="separate-case">
+                        <img src="{% if case.image %}{{ case.image.url }}{% else %}{% static "images/noimage.png" %}{% endif %}" class="case-img" alt="">
+                        <h3>{{ case.name }}</h3>
+                        <p>{{ case.description }}</p>
+                        <p>Price: ${{ case.price }}</p>
         
+                        <form action="{% url 'cases:buy_case' case.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="buy-btn">Buy</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No cases available</p>
+            {% endif %}
+        </div>
+                    {% comment %} <div class="items">
+                        {% for item in case.items.all %}
+                            <div class="item">
+                                <p>{{ item.name }} ({{ item.rarity }})</p>
+                                <p>Value: ${{ item.value }}</p>
+                                <p>Probability: {{ item.get_probability }}</p>
+                            </div>
+                        {% empty %}
+                            <p>No items in this case</p>
+                        {% endfor %}
+                    </div> {% endcomment %}
     </div>
 {% endblock content %}

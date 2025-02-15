@@ -7,10 +7,11 @@ from django.conf import settings
 app_name = 'users'
 
 urlpatterns = [
-    path('login/', views.login, name='login'),
+    path('login/', views.user_login, name='login'),
     path('registration/', views.registration, name='registration'),
     path('profile/', views.profile, name='profile'),
-    path('logout/', views.logout, name='logout')
+    path('logout/', views.logout, name='logout'),
+    path('get_money/', views.get_money, name='get_money')
 ]
 
 if settings.DEBUG:

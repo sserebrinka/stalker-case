@@ -4,5 +4,58 @@
 {% block title %}Profile{% endblock title %}
 
 {% block content %}
+<div class="profile-box">
+    <h2 class="profile-title">Profile</h2>
+    <div class="profile-info">
+        {% comment %} <img src="{{ user.profile.image.url }}" alt="Profile Image" class="profile-image"> {% endcomment %}
+        <p class="profile-text"><strong>Username:</strong> {{ user.username }}</p>
+        <p class="profile-text"><strong>Balance:</strong> {{ user.profile.balance }}$</p>
+        {% if user.profile.balance < 80 %}
+            <form method="post" action="{% url 'users:get_money' %}">
+                {% csrf_token %}
+                <button type="submit" class="get-money-btn">Get money</button>
+            </form>
+        {% endif %}
+    </div>
+</div>
+
+<div class="items-profile-box">
+    <h2 class="profile-title">Inventory</h2>
+    <div class="tabs"> 
+        <button class="tab-button active" data-tab="cases">Cases</button>
+        <button class="tab-button" data-tab="items">Items</button>
+    </div>
+
+    <div id="cases" class="tab-content active">
+        {% if profile.cases.all %}
+            <ul class="inventory-list">
+                {% for case in profile.cases.all %}
+                    <li class="inventory-item">
+                        {{ case.name }}
+                        {% for purchased_case in purchased_cases_list %}
+                            {% if purchased_case.name == case.name %}
+                                ({{ purchased_case.quantity }} pcs)
+                            {% endif %}
+                        {% endfor %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="empty-inventory">There are no cases yet</p>
+            <a href="{% url 'cases:cases_view' %}" class="buy-cases-btn">Buy cases</a>
+        {% endif %}
+    </div>
     
+    <div id="items" class="tab-content">
+        {% if user.profile.items.all %}
+            <ul class="inventory-list">
+                {% for item in user.profile.items.all %}
+                    <li class="inventory-item">{{ item.name }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="empty-inventory">There are no items yet</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock content %}

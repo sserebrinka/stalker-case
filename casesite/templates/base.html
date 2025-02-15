@@ -33,9 +33,12 @@
             </div>
             <div class="header-profile">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'users:profile' %}" class="m-2">Profile</a>
+                    <a href="{% url 'users:profile' %}" class="m-2 nav-a {% if active_page == 'profile' %}active{% endif %}">Profile</a>
+                    <div class="box-balance">
+                        {{ profile.balance }} $
+                    </div>
                 {% else %}
-                    <a href="{% url 'users:login' %}" class="m-2">Login</a>
+                    <a href="{% url 'users:login' %}" class="m-2 nav-a {% if active_page == 'login' %}active{% endif %}">Login</a>
                 {% endif %}
             </div>
     </header>
@@ -44,5 +47,7 @@
         {% endblock content %}
     </div>
     <img src="{% static 'images/background.png' %}" alt="background" class="background">
+    {% comment %} script {% endcomment %}
+    <script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>
